@@ -440,7 +440,6 @@ function DrawLaser()
             	Debug.Log("red");
             }
             if (hit.transform.gameObject.tag == "green"){
-            	
             	iactive = false;
             	line_green2.points3.Add(curpos);
             	while(green_active){
