@@ -170,7 +170,8 @@ function DrawLaser()
         if (Physics.Raycast(curpos,currot,hit,dist))
         {
             //verti++;
-            
+             var tmp = 0;
+             var tmp2 = 0;
             glass_rot=currot;
             water_rot=currot;
             curpos=hit.point;
@@ -205,7 +206,7 @@ function DrawLaser()
             	var glass_pos=curpos;
             	currot = Vector3.Reflect(currot,hit.normal);
             	while(glass_active){
-
+					tmp++;
             		if(Physics.Raycast(glass_pos,glass_rot,hit_glass,dist)){
             			glass_pos=hit_glass.point;
 		            	if(hit_glass.transform.gameObject.tag=="normal"){
@@ -226,7 +227,9 @@ function DrawLaser()
 			            	line_blue2.points3.Add(glass_pos);
 			            	var blue_pos=glass_pos;
 			            	var blue_rot=glass_rot;
+			            	tmp2 = 0;
 			            	while(blue_active){
+			            		tmp2++;
 				            	if(Physics.Raycast(blue_pos,blue_rot,hit_blue,dist)){
 				            		
 			           				blue_pos=hit_blue.point;
@@ -243,6 +246,9 @@ function DrawLaser()
 					            		blue_active=false;
 					            		}
 				            	}else {blue_active=false;}
+				            	
+				            	if(tmp2 > 10)
+				            	blue_active = false;
             				}
     
            				 }
@@ -251,7 +257,9 @@ function DrawLaser()
 			            	line_red2.points3.Add(glass_pos);
 			            	var red_pos=glass_pos;
 			            	var red_rot=glass_rot;
+			            	
 			            	while(red_active){
+			            	tmp2++;
 				            	if(Physics.Raycast(red_pos,red_rot,hit_red,dist)){
 				            		
 			           				red_pos=hit_red.point;
@@ -268,6 +276,8 @@ function DrawLaser()
 					            		red_active=false;
 					            		}
 				            	}else {red_active=false;}
+				            	if(tmp2 > 10)
+				            	red_active = false;
             				}
            				 }
            				 
@@ -277,6 +287,7 @@ function DrawLaser()
 			            	var green_pos=glass_pos;
 			            	var green_rot=glass_rot;
 			            	while(green_active){
+			            	tmp2++;
 				            	if(Physics.Raycast(green_pos,green_rot,hit_green,dist)){
 				            		
 			           				green_pos=hit_green.point;
@@ -294,6 +305,9 @@ function DrawLaser()
 					            		green_active=false;
 					            		}
 				            	}else {green_active=false;}
+				            	if(tmp2 > 10)
+				            	green_active = false;
+				            	
             				}
     
            				 }
@@ -304,6 +318,7 @@ function DrawLaser()
 			            	var yellow_pos=glass_pos;
 			            	var yellow_rot=glass_rot;
 			            	while(yellow_active){
+			            	tmp2++;
 				            	if(Physics.Raycast(yellow_pos,yellow_rot,hit_yellow,dist)){
 				            		
 			           				yellow_pos=hit_yellow.point;
@@ -320,6 +335,8 @@ function DrawLaser()
 					            		yellow_active=false;
 					            		}
 				            	}else {yellow_active=false;}
+				            	if(tmp2 > 10)
+				            	yellow_active = false;
             				}
     
            				 }
@@ -338,7 +355,7 @@ function DrawLaser()
             	currot = Vector3.Reflect(currot,hit.normal);
             	
             	while(water_active){
-            		
+            		tmp++;
             		
             	
             		if(Physics.Raycast(water_pos,water_rot,hit_water,dist)){
@@ -361,6 +378,8 @@ function DrawLaser()
 		            	
 		          	  		 	
             		}else {water_active=false;}
+            		if(tmp > 10)
+            		water_active = false;
             	}
             	Debug.Log("water");
             }
@@ -370,12 +389,13 @@ function DrawLaser()
             	
             	Debug.Log("ice");
             }
+           
             if (hit.transform.gameObject.tag == "blue"){
             	
             	iactive = false;
             	line_blue2.points3.Add(curpos);
             	while(blue_active){
-	            	
+	            	tmp++;	
 	            	if(Physics.Raycast(curpos,glass_rot,hit_blue,dist)){
 	            		glass_rot=currot;
            				curpos=hit_blue.point;
@@ -393,15 +413,18 @@ function DrawLaser()
 	            	}else {
 	            	blue_active=false;
 	            	}
+	            	if(tmp > 10)
+	            	green_active = false;
             	}	
             	Debug.Log("blue");
             }
+            tmp = 0;
             if (hit.transform.gameObject.tag == "red"){
             	
             	iactive = false;
             	line_red2.points3.Add(curpos);
             	while(red_active){
-	            	
+	            	tmp++;	
             //lr.SetPosition(verti-1,hit.point);
             		//line_green.points3.Add (hit.point);
 	            	if(Physics.Raycast(curpos,glass_rot,hit_red,dist)){
@@ -436,14 +459,17 @@ function DrawLaser()
 	            	}else {
 	            	red_active=false;
 	            	}
+	            	if(tmp > 10)
+	            	green_active = false;
             	}
-            	Debug.Log("red");
+
             }
+            tmp = 0;
             if (hit.transform.gameObject.tag == "green"){
             	iactive = false;
             	line_green2.points3.Add(curpos);
             	while(green_active){
-	            	
+	            	tmp++;
             //lr.SetPosition(verti-1,hit.point);
             		//line_green.points3.Add (hit.point);
 	            	if(Physics.Raycast(curpos,glass_rot,hit_green,dist)){
@@ -477,15 +503,19 @@ function DrawLaser()
 	            	}else {
 	            	green_active=false;
 	            	}
+	            	
+	            	if(tmp > 10)
+	            	green_active = false;
             	}
-            	Debug.Log("green");
+            	//Debug.Log("green");
             }
+            tmp = 0;
             if (hit.transform.gameObject.tag == "yellow"){
             	
             	iactive = false;
             	line_yellow2.points3.Add(curpos);
             	while(yellow_active){
-	            	
+	            	tmp++;
 	            	if(Physics.Raycast(curpos,glass_rot,hit_yellow,dist)){
 	            		glass_rot=currot;
            				curpos=hit_yellow.point;
@@ -503,6 +533,9 @@ function DrawLaser()
 	            	}else {
 	            	yellow_active=false;
 	            	}
+	            	
+	            	if(tmp > 10)
+	            	green_active = false;
             	}
             	Debug.Log("yellow");
             }
@@ -514,7 +547,7 @@ function DrawLaser()
             	var main_rot=currot;
             	var main_pos=curpos;
             	while(blue_active){
-	            	
+	            	tmp++;
 	            	if(Physics.Raycast(curpos,currot,hit_blue,dist)){
 	            		glass_rot=currot;
            				curpos=hit_blue.point;
@@ -532,11 +565,14 @@ function DrawLaser()
 	            	}else {
 	            	blue_active=false;
 	            	}
+	            	if(tmp > 10)
+	            	blue_active = false;
+	            	
             	}
             	currot=main_rot;
             	curpos=main_pos;
             	while(red_active){
-	            	
+	            	tmp++;
 	            	if(Physics.Raycast(curpos,glass_rot,hit_red,dist)){
 	            		glass_rot=currot;
            				curpos=hit_red.point;
@@ -554,10 +590,12 @@ function DrawLaser()
 	            	}else {
 	            	red_active=false;
 	            	}
+	            	if(tmp > 10)
+	            	red_active = false;
             	}
             	
             }
-            
+          
             if (hit.transform.gameObject.tag == "mirror-ld"){}
             if (hit.transform.gameObject.tag == "mirror-lu"){}
             if (hit.transform.gameObject.tag == "mirror-rd"){}
