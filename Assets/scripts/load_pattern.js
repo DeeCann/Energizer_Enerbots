@@ -269,7 +269,7 @@ if(Application.loadedLevelName=="lvl06"){load_test_pattern(lvl07);PlayerPrefs.Se
 if(Application.loadedLevelName=="lvl07"){load_test_pattern(lvl08);PlayerPrefs.SetString("level_08","enabled");}
 if(Application.loadedLevelName=="lvl08"){load_test_pattern(lvl09);PlayerPrefs.SetString("level_09","enabled");}
 if(Application.loadedLevelName=="lvl09"){load_test_pattern(lvl10);PlayerPrefs.SetString("level_10","enabled");}
-if(Application.loadedLevelName=="lvl10"){load_test_pattern(lvl11);PlayerPrefs.SetString("level_11","enabled");}
+//if(Application.loadedLevelName=="lvl10"){load_test_pattern(lvl11);PlayerPrefs.SetString("level_11","enabled");}
 if(Application.loadedLevelName=="lvl11"){load_test_pattern(lvl12);PlayerPrefs.SetString("level_12","enabled");}
 if(Application.loadedLevelName=="lvl12"){load_test_pattern(lvl13);PlayerPrefs.SetString("level_13","enabled");}
 if(Application.loadedLevelName=="lvl13"){load_test_pattern(lvl14);PlayerPrefs.SetString("level_14","enabled");}
