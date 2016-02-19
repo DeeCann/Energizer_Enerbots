@@ -9,11 +9,12 @@ function Start () {
 }
 
 function Update () {
-
+//PlayerPrefs.DeleteAll();
 }
 
 function exit_game(){
-Application.Quit();
+//Application.Quit();
+Application.LoadLevel("load_level");
 }
 
 function start_game(){
@@ -63,7 +64,7 @@ if(PlayerPrefs.GetString("premium")=="enabled"){
 	if(pack==3){Application.LoadLevel("pack3");}
 	}
 else{
-Application.LoadLevel("unlock_1");
+Application.LoadLevel("enter_code");
 wrong.Play();
 }
 

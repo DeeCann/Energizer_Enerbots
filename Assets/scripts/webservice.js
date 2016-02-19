@@ -23,7 +23,7 @@ function Connect () {
 	Debug.Log(string);
 	var form = new WWWForm();
 	form.AddField("get_message", "tmp");
-	var request = new WWW("http://apps.pc-fb.com/energizer-100-games/public/auth/code2?code="+string, form);
+	var request = new WWW("https://apps.pc-fb.com/energizer-100-games/public/auth/code2?code="+string, form);
 	
 	yield request;
 	
@@ -32,7 +32,7 @@ function Connect () {
 	yield WaitForSeconds(1f);
 	
 	print("Received ...");
-	
+	Debug.Log(request.error);
 	if("Wrong code" in request.text)
 		errText.GetComponent.<UI.Text>().text = "Wrong code";
 	else if("Code has been already used. Please read FAQ for more information" in request.text)

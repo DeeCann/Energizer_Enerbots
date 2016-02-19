@@ -44,11 +44,11 @@ if(PlayerPrefs.GetString("first")!="yes")
 	yield WaitForSeconds(4);
 	PlayerPrefs.SetString("first","yes");
 	PlayerPrefs.SetString("level_01","enabled");
-	PlayerPrefs.SetString("level_11","enabled");
+	//PlayerPrefs.SetString("level_11","enabled");
 	Application.LoadLevel("load_level");
 	}else{
 	PlayerPrefs.SetString("level_01","enabled");
-	PlayerPrefs.SetString("level_11","enabled");
+	//PlayerPrefs.SetString("level_11","enabled");
 	Application.LoadLevel("load_level");
 	}
 

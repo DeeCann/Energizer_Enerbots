@@ -9,14 +9,18 @@ var off_:GameObject;
 var old:boolean;
 var failed_sound:AudioSource;
 var sound_flag:boolean;
+var failedTimes:int;
 
 function Awake(){
 
 }
 
 function Start () {
+//PlayerPrefs.DeleteKey("premium");
+//PlayerPrefs.DeleteKey("FailedTImes");
 timer_end=false;
 sound_flag=true;
+failedTimes = PlayerPrefs.GetInt("FailedTImes");
 
 get_timer_value();
 
@@ -34,6 +38,14 @@ if(timer<0){
 	failed.SetActive(true);timer_end=true;off_.SetActive(true);
 	if(!sound_flag){failed_sound.Play();sound_flag=true;}
 	timer_start=false;
+	PlayerPrefs.SetInt("FailedTImes", ++failedTimes);
+	Debug.Log(Application.loadedLevelName);
+	Debug.Log(PlayerPrefs.GetInt("FailedTImes"));
+	if(PlayerPrefs.GetInt("FailedTImes") >= 3 && Application.loadedLevelName == "lvl10" && !PlayerPrefs.HasKey("premium")) {
+	
+		Application.LoadLevel("enter_code");
+		PlayerPrefs.SetInt("FailedTImes", 0);
+	}
 	}
 
 }
